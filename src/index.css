@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Vazirmatn:wght@100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: "Arimo", sans-serif;
+    background: linear-gradient(to bottom, #6384b8, #848aad, #9fa0c0);
+    color: #B0BEC5;
+    background-attachment: fixed;
+    -webkit-user-select: none;
+    user-select: none;
+    height: 100%;
+    margin: 0;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+dl {
+    line-height: 2rem;
+}
+
+.app-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.weather-app {
+    margin: 0 5rem 3rem 5rem;
+    border-radius: 10px;
+    padding: 0 4rem;
+    background-color: #2f4c5ba5;
+}

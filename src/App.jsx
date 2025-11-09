@@ -11,11 +11,11 @@ const App = () => {
 			<div className="app-wrapper">
 				<div className="app">
 					<div className="container">
+						<Navbar />
 						<div className="search-wrapper">
 							<SearchBar />
 						</div>
 						<div className="weather-app">
-							<Navbar />
 							<Routes>
 								<Route path="/" element={<AppLayout />} />
 								<Route path="/daily" element={<Daily />} />
