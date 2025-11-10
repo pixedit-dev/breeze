@@ -1,4 +1,5 @@
 import "./app-layout.css";
+import Hourly from "./Hourly";
 const AppLayout = () => {
 	return (
 		<div className="home-page">
@@ -74,6 +75,7 @@ const AppLayout = () => {
 					</dl>
 				</div>
 			</div>
+			<Hourly />
 		</div>
 	);
 };
