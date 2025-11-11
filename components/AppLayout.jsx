@@ -1,83 +1,117 @@
+import { useContext } from "react";
 import "./app-layout.css";
-import Hourly from "./Hourly";
-const AppLayout = () => {
+import Loader from "./Loader";
+import { WeatherContext } from "../context/WeatherContext";
+
+const Home = () => {
+	const { state } = useContext(WeatherContext);
+	const data = state.currentWeather;
+
+	if (state.loading) return <Loader />;
+	if (!data)
+		return (
+			<p style={{ textAlign: "center", padding: "0.5rem 0" }}>
+				No weather data yet. Please search a city!
+			</p>
+		);
+
+	const options = { hour: "2-digit", minute: "2-digit" };
+	const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString(
+		[],
+		options
+	);
+	const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString(
+		[],
+		options
+	);
+
+	console.log(sunrise);
+
 	return (
 		<div className="home-page">
-			<div className="cur-temp-section">
-				<div className="left-section">
-					<dl>
-						<div className="bold">
-							<p>**DISCRIPTION**</p>
-						</div>
-						<div>
-							<dt>**FEELS LIKE**</dt>
-							<dd>100</dd>
-						</div>
-						<div>
-							<dt>**PRESURE**</dt>
-							<dd>100 hPa</dd>
-						</div>
-						<div>
-							<dt>**WIND SPEED**</dt>
-							<dd>100 m/s</dd>
-						</div>
-						<div>
-							<dt>**WIND DEG**</dt>
-							<dd>100 km</dd>
-						</div>
+			{data && (
+				<div className="cur-temp-section">
+					<div className="left-section">
+						<dl>
+							<div className="bold">
+								<p>{data.weather[0].description}</p>
+							</div>
+							<div>
+								<dt>feels like:</dt>
+								<dd>{data.main.feels_like}°F</dd>
+							</div>
+							<div>
+								<dt>pressure:</dt>
+								<dd>{data.main.pressure} hPa</dd>
+							</div>
+							<div>
+								<dt>wind speed:</dt>
+								<dd>{data.wind.speed} m/s</dd>
+							</div>
+							<div>
+								<dt>wind deg:</dt>
+								<dd>{data.wind.deg} km</dd>
+							</div>
 
-						<div>
-							<dt>**WIND GUST**</dt>
-							<dd>100</dd>
+							{data.wind.gust && (
+								<div>
+									<dt>wind gust:</dt>
+									<dd>{data.wind.gust}</dd>
+								</div>
+							)}
+							<div>
+								<dt>visibility:</dt>
+								<dd>{data.visibility}</dd>
+							</div>
+						</dl>
+					</div>
+					<div className="main">
+						<h3>
+							{data.name} <span>{data.sys.country}</span>
+						</h3>
+						<strong>Today</strong>
+						<div className="cur-weather">
+							<img
+								src={`https://openweathermap.org/img/wn/${state.currentWeather.weather[0].icon}@2x.png`}
+								alt="Weather Icon"
+							/>
+							<p>{data.main.temp}°F</p>
 						</div>
-						<div>
-							<dt>**VISIBILITY**</dt>
-							<dd>**VISIBILITY**</dd>
-						</div>
-					</dl>
-				</div>
-				<div className="main">
-					<h3>
-						**NAME** <span>**COUNTRY**</span>
-					</h3>
-					<strong>Today</strong>
-					<div className="cur-weather">
-						{/* icon here (image) */}
-						<p>**TEMP AND UNIT**</p>
+					</div>
+					<div className="right-section">
+						<dl>
+							<div>
+								<dt>min:</dt>
+								<dd>{data.main.temp_min}°F</dd>
+							</div>
+							<div>
+								<dt>max:</dt>
+								<dd>{data.main.temp_max}°F</dd>
+							</div>
+							<div>
+								<dt>humidity:</dt>
+								<dd>{data.main.humidity}</dd>
+							</div>
+							{data.main.sea_level && (
+								<div>
+									<dt>sea level:</dt>
+									<dd>{data.main.sea_level} hPa</dd>
+								</div>
+							)}
+							<div>
+								<dt>sunrise:</dt>
+								<dd>{sunrise}</dd>
+							</div>
+							<div>
+								<dt>sunset:</dt>
+								<dd>{sunset}</dd>
+							</div>
+						</dl>
 					</div>
 				</div>
-				<div className="right-section">
-					<dl>
-						<div>
-							<dt>**MINIMUME**</dt>
-							<dd>100</dd>
-						</div>
-						<div>
-							<dt>** MAXIMUME**</dt>
-							<dd>100</dd>
-						</div>
-						<div>
-							<dt>**HUMIDITY**</dt>
-							<dd>**HUMIDITY**</dd>
-						</div>
-						<div>
-							<dt>**SEE LEVEL**</dt>
-							<dd>**SEE LEVEL HPA**</dd>
-						</div>
-						<div>
-							<dt>**SUNRISE**</dt>
-							<dd>**SUNRISE**</dd>
-						</div>
-						<div>
-							<dt>SUNSET</dt>
-							<dd>**SUNSET**</dd>
-						</div>
-					</dl>
-				</div>
-			</div>
-			<Hourly />
+			)}
 		</div>
 	);
 };
 
-export default AppLayout;
+export default Home;
