@@ -2,6 +2,7 @@ import { useContext } from "react";
 import "./app-layout.css";
 import Loader from "./Loader";
 import { WeatherContext } from "../context/WeatherContext";
+import Hourly from "./Hourly";
 
 const Home = () => {
 	const { state } = useContext(WeatherContext);
@@ -110,6 +111,7 @@ const Home = () => {
 					</div>
 				</div>
 			)}
+			<Hourly />
 		</div>
 	);
 };
