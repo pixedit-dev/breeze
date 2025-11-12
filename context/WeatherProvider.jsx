@@ -1,14 +1,18 @@
 import { useReducer } from "react";
 import { WeatherContext } from "./WeatherContext";
-import { fetchWeather, fetchHourlyForecast } from "../api/api";
+import {
+	fetchWeather,
+	fetchHourlyForecast,
+	fetchDailyForecast,
+} from "../api/api";
 
 const initialState = {
 	city: "",
 	currentWeather: null,
 	hourlyWeather: null,
+	dailyWeather: null,
 	loading: false,
 	error: null,
-	unit: "F",
 };
 ////////// reducer function
 const weatherReducer = (state, action) => {
@@ -19,12 +23,12 @@ const weatherReducer = (state, action) => {
 			return { ...state, currentWeather: action.payload };
 		case "SET_HOURLY_WEATHER":
 			return { ...state, hourlyWeather: action.payload };
+		case "SET_DAILY_WEATHER":
+			return { ...state, dailyWeather: action.payload };
 		case "SET_LOADING":
 			return { ...state, loading: action.payload };
 		case "SET_ERROR":
 			return { ...state, error: action.payload };
-		case "SET_UNIT":
-			return { ...state, unit: action.payload };
 		default:
 			return state;
 	}
@@ -41,6 +45,7 @@ export const WeatherProvider = ({ children }) => {
 		try {
 			const weatherData = await fetchWeather(city);
 			const hourly = await fetchHourlyForecast(city);
+			const daily = await fetchDailyForecast(city);
 			if (!weatherData) {
 				dispatch({
 					type: "SET_ERROR",
@@ -51,6 +56,7 @@ export const WeatherProvider = ({ children }) => {
 
 			dispatch({ type: "SET_CURRENT_WEATHER", payload: weatherData });
 			dispatch({ type: "SET_HOURLY_WEATHER", payload: hourly });
+			dispatch({ type: "SET_DAILY_WEATHER", payload: daily });
 			dispatch({ type: "SET_ERROR", payload: null });
 		} catch (error) {
 			dispatch({ type: "SET_ERROR", payload: error.message });
@@ -59,13 +65,8 @@ export const WeatherProvider = ({ children }) => {
 		}
 	};
 
-	const setUnit = (unit) => {
-		dispatch({ type: "SET_UNIT", payload: unit });
-	};
-
 	return (
-		<WeatherContext.Provider
-			value={{ state, dispatch, fetchWeatherData, setUnit }}>
+		<WeatherContext.Provider value={{ state, dispatch, fetchWeatherData }}>
 			{children}
 		</WeatherContext.Provider>
 	);
