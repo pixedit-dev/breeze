@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { WeatherContext } from "../context/WeatherContext";
 import Loader from "./Loader";
 import "./daily.css";
+import { convertTemp } from "../utils/utils";
 
 const Daily = () => {
 	const { state } = useContext(WeatherContext);
@@ -10,9 +11,6 @@ const Daily = () => {
 	if (state.loading) {
 		return <Loader />;
 	}
-
-	if (!state.city) return <p>No city yet. Please search a city!</p>;
-
 	return (
 		<div className="daily-forecast-wrapper">
 			{state.city && <h3>Daily Forecast for {state.city}</h3>}
@@ -24,7 +22,9 @@ const Daily = () => {
 							<div className="day-main">
 								<h4>{day.dt_txt.split(" ")[0]}</h4>
 								<div className="day-nutshel">
-									<p>{day.main.temp}°F</p>
+									<p>
+										{convertTemp(day.main.temp, state.unit)}°{state.unit}
+									</p>
 									<img src={icon} />
 									<h5>{day.weather[0].main}</h5>
 								</div>
@@ -37,19 +37,28 @@ const Daily = () => {
 									</div>
 									<div>
 										<dt>Temp</dt>
-										<dd>{day.main.temp}°F</dd>
+										<dd>
+											{convertTemp(day.main.temp, state.unit)}°{state.unit}
+										</dd>
 									</div>
 									<div>
 										<dt>Feels Like</dt>
-										<dd>{day.main.feels_like}°F</dd>
+										<dd>
+											{convertTemp(day.main.feels_like, state.unit)}°
+											{state.unit}
+										</dd>
 									</div>
 									<div>
 										<dt>min</dt>
-										<dd>{day.main.temp_min}°F</dd>
+										<dd>
+											{convertTemp(day.main.temp_min, state.unit)}°{state.unit}
+										</dd>
 									</div>
 									<div>
 										<dt>max</dt>
-										<dd>{day.main.temp_max}°F</dd>
+										<dd>
+											{convertTemp(day.main.temp_max, state.unit)}°{state.unit}
+										</dd>
 									</div>
 								</dl>
 							</div>

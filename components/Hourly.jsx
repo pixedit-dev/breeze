@@ -6,6 +6,7 @@ import { FreeMode } from "swiper/modules";
 import "./hourly.css";
 import { CiDroplet } from "react-icons/ci";
 import { WeatherContext } from "../context/WeatherContext";
+import { convertTemp } from "../utils/utils";
 
 const Hourly = () => {
 	const { state } = useContext(WeatherContext);
@@ -13,7 +14,7 @@ const Hourly = () => {
 
 	return (
 		<section className="hourly-section">
-			<h3>Hourly Forecast (48 hours)</h3>
+			<h3>Hourly Forecast (next 48 hours)</h3>
 
 			<Swiper
 				modules={[FreeMode]}
@@ -32,7 +33,7 @@ const Hourly = () => {
 					});
 
 					return (
-						<SwiperSlide key={index} style={{ inlineSize: "70px" }}>
+						<SwiperSlide key={index} style={{ width: "70px" }}>
 							<div className="hour-card">
 								<p>{time}</p>
 								<img
@@ -40,8 +41,8 @@ const Hourly = () => {
 									alt="icon"
 								/>
 								<p className="hourly-temp">
-									{temp}
-									<span>°F</span>
+									{convertTemp(temp, state.unit)}
+									<span>°{state.unit}</span>
 								</p>
 								<p className="humidity">
 									<CiDroplet />
