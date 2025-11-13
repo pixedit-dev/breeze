@@ -10,6 +10,9 @@ const Daily = () => {
 	if (state.loading) {
 		return <Loader />;
 	}
+
+	if (!state.city) return <p>No city yet. Please search a city!</p>;
+
 	return (
 		<div className="daily-forecast-wrapper">
 			{state.city && <h3>Daily Forecast for {state.city}</h3>}

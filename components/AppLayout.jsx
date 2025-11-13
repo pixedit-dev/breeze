@@ -3,6 +3,7 @@ import "./app-layout.css";
 import Loader from "./Loader";
 import { WeatherContext } from "../context/WeatherContext";
 import Hourly from "./Hourly";
+import { convertUnixToTime } from "../utils/utils";
 
 const Home = () => {
 	const { state } = useContext(WeatherContext);
@@ -16,17 +17,8 @@ const Home = () => {
 			</p>
 		);
 
-	const options = { hour: "2-digit", minute: "2-digit" };
-	const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString(
-		[],
-		options
-	);
-	const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString(
-		[],
-		options
-	);
-
-	console.log(sunrise);
+	const sunrise = convertUnixToTime(data.sys.sunrise, data.timezone);
+	const sunset = convertUnixToTime(data.sys.sunset, data.timezone);
 
 	return (
 		<div className="home-page">
