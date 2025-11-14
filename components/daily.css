@@ -59,3 +59,42 @@
     padding: 1rem;
     border-left: 1px solid rgb(198, 198, 198);
 }
+
+dl div {
+    margin: 0;
+}
+
+@media(max-width:800px) {
+    .daily-forecast {
+        grid-template-columns: auto;
+        margin-top: 0.5rem;
+    }
+
+    .day-temp {
+        padding: 0 1rem;
+    }
+
+    .day-detail {
+        border: unset;
+    }
+
+    .day-detail p {
+        padding-left: 1rem;
+    }
+
+    .day-main {
+        border: unset !important;
+    }
+}
+
+@media(max-width:350px) {
+    .daily-forecast-wrapper {
+        margin: 0;
+        margin-bottom: 2rem;
+    }
+
+    .daily-forecast-wrapper h3 {
+        font-size: 16px;
+        margin-top: 1rem;
+    }
+}

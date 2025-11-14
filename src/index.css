@@ -29,7 +29,7 @@ a {
 }
 
 dl {
-    line-height: 2rem;
+    line-height: 1.7rem;
 }
 
 .app-wrapper {
@@ -48,6 +48,13 @@ dl {
 .weather-app {
     margin: 0 5rem 3rem 5rem;
     border-radius: 10px;
-    padding: 0 4rem;
+    padding: 0 1.5rem;
     background-color: #2f4c5ba5;
+}
+
+@media (max-width:500px) {
+    .weather-app {
+        margin: 0 0.5rem;
+        margin-bottom: 2rem;
+    }
 }

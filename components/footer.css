@@ -54,3 +54,21 @@ footer main {
 .introduce {
     display: inline;
 }
+
+/* Responsive */
+
+@media(max-width: 650px) {
+
+
+    footer main {
+        display: block;
+    }
+
+    .about-developer {
+        margin-bottom: 2rem;
+    }
+
+    .about-breeze {
+        width: 100%;
+    }
+}

@@ -1,6 +1,6 @@
 .hour-card {
     width: 80px;
-    padding: 1.5rem 8px;
+    padding: 1rem 8px;
     text-align: center;
     border-radius: 12px;
     background: rgba(255, 255, 255, 0.08);
@@ -53,8 +53,24 @@
     }
 }
 
+@media(max-width:500px) {
+    .hour-card {
+        font-size: 12px;
+        padding: 0.5rem 4px;
+    }
+
+    .hourly-temp {
+        font-size: 14px;
+    }
+
+
+    .hourly-section {
+        margin: 1rem 2rem;
+    }
+}
+
 @media(max-width:350px) {
     .hourly-section {
-        margin: 1rem;
+        margin: 0;
     }
 }
