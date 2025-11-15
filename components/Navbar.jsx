@@ -5,7 +5,7 @@ import UnitSelectorBtn from "./UnitSelectorBtn";
 import { useContext } from "react";
 import { ThemeContext } from "../context/themeContext";
 const Navbar = () => {
-	const { toggleTheme } = useContext(ThemeContext);
+	const { theme, toggleTheme } = useContext(ThemeContext);
 
 	return (
 		<nav className="navbar">
@@ -18,7 +18,10 @@ const Navbar = () => {
 				Daily Forecast
 			</NavLink>
 			<UnitSelectorBtn />
-			<button className="toggle-btn" onClick={toggleTheme}>
+			<button
+				className="toggle-btn"
+				onClick={toggleTheme}
+				title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}>
 				<div className="icon-track">
 					<span className="icon sun">🌞</span>
 					<span className="icon moon">🌙</span>
