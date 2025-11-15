@@ -6,16 +6,40 @@
     box-sizing: border-box;
 }
 
+:root {
+    /* light theme */
+    --bg: linear-gradient(to bottom, #6384b8, #848aad, #9fa0c0);
+    --text: #B0BEC5;
+    --card: #ffffff44;
+}
+
+/* dark theme applied when top-level element has id="dark" */
+#dark {
+    --bg: linear-gradient(to bottom, #141e30, #243b55);
+    --text: #E6EEF8;
+    --card: #0f172044;
+    --button: rgb(11, 81, 95);
+}
+
+#light {
+    --bg: linear-gradient(to bottom, #6384b8, #848aad, #9fa0c0);
+    --text: #B0BEC5;
+    --card: #ffffff44;
+    --button: #07537cd2;
+
+}
+
 html,
 body {
     font-family: "Arimo", sans-serif;
-    background: linear-gradient(to bottom, #6384b8, #848aad, #9fa0c0);
-    color: #B0BEC5;
+    background: var(--bg);
+    color: var(--text);
     background-attachment: fixed;
     -webkit-user-select: none;
     user-select: none;
     height: 100%;
     margin: 0;
+    transition: background 0.5s ease;
 }
 
 ul,

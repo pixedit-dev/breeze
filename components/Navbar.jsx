@@ -2,7 +2,11 @@ import { NavLink } from "react-router-dom";
 import { IoHome } from "react-icons/io5";
 import "./navbar.css";
 import UnitSelectorBtn from "./UnitSelectorBtn";
+import { useContext } from "react";
+import { ThemeContext } from "../context/themeContext";
 const Navbar = () => {
+	const { toggleTheme } = useContext(ThemeContext);
+
 	return (
 		<nav className="navbar">
 			<NavLink to="/">
@@ -14,6 +18,12 @@ const Navbar = () => {
 				Daily Forecast
 			</NavLink>
 			<UnitSelectorBtn />
+			<button className="toggle-btn" onClick={toggleTheme}>
+				<div className="icon-track">
+					<span className="icon sun">🌞</span>
+					<span className="icon moon">🌙</span>
+				</div>
+			</button>
 		</nav>
 	);
 };

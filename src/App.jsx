@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import AppLayout from "../components/AppLayout";
 import Daily from "../components/Daily";
 import Footer from "../components/Footer";
+import { useContext } from "react";
+import { ThemeContext } from "../context/themeContext";
 
 const App = () => {
 	return (
