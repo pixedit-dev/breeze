@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import "./app-layout.css";
 import Loader from "./Loader";
-import { WeatherContext } from "../context/WeatherContext";
 import Hourly from "./Hourly";
 import { convertTemp, convertUnixToTime } from "../utils/utils";
+import { WeatherContext } from "../context/WeatherContext";
 
 const Home = () => {
 	const { state } = useContext(WeatherContext);

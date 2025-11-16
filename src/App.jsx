@@ -1,11 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import SearchBar from "../components/SearchBar";
-import Navbar from "../components/Navbar";
-import AppLayout from "../components/AppLayout";
-import Daily from "../components/Daily";
-import Footer from "../components/Footer";
-import { useContext } from "react";
-import { ThemeContext } from "../context/themeContext";
+import SearchBar from "./components/SearchBar";
+import Navbar from "./components/Navbar";
+import AppLayout from "./components/AppLayout";
+import Daily from "./components/Daily";
+import Footer from "./components/Footer";
 
 const App = () => {
 	return (
