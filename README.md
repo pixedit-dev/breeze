@@ -2,9 +2,17 @@
 
 Breeze is a modern, responsive weather application designed to deliver accurate forecasts with a clean and intuitive interface. It’s simple to use and quickly provides users with all the important weather data in a clear, straightforward way. Although it began as a personal learning project, I hope you find it useful and enjoyable.
 
+## Preview
+
+<img src="./assets/Screenshot_1.png" width="450px" />
+<img src="./assets/Screenshot_2.png" width="450px" />
+<img src="./assets/Screenshot_3.png" width="450px" />
+
 ## Demo link
 
-_I'll add this later_
+Click on the link to navigate to live demo
+
+[View the live demo](https://breeze-36wzbxwy0-pixedit-1760s-projects.vercel.app/)
 
 ## Features
 
@@ -78,10 +86,6 @@ The application reads this variable using import.meta.env.VITE_OPENWEATHER_API_K
 ```
 npm run dev
 ```
-
-## Preview
-
-_Screenshots will be added later!_
 
 ## Next features include:
 
