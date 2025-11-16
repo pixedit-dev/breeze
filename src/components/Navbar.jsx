@@ -3,7 +3,7 @@ import { IoHome } from "react-icons/io5";
 import "./navbar.css";
 import UnitSelectorBtn from "./UnitSelectorBtn";
 import { useContext } from "react";
-import { ThemeContext } from "../context/themeContext";
+import { ThemeContext } from "../context/ThemeContext";
 const Navbar = () => {
 	const { theme, toggleTheme } = useContext(ThemeContext);
 
